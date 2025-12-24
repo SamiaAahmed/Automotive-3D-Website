@@ -225,6 +225,8 @@ main {
     gap: 10px;
     border-radius: 32px;
     border: 1px solid var(--main_green_color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero_button_text {
@@ -234,4 +236,14 @@ main {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    transition: color 0.3s ease;
+}
+
+.hero_button:hover {
+    background-color: var(--main_green_color);
+    box-shadow: 0 0 20px rgba(44, 243, 44, 0.596);
+}
+
+.hero_button:hover .hero_button_text {
+    color: var(--main_black_color);
 }
