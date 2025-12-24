@@ -1,0 +1,1 @@
+document.getElementById("text1").innerHTML = "EXPLORE NOW";

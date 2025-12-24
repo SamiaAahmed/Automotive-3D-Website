@@ -1,0 +1,131 @@
+:root {
+    --main_black_color: #0E0D10;
+    --main_green_color: #22D521;
+    --main_white_color: #FBFBFB;
+}
+
+@font-face {
+    font-family: 'DT';
+    src: url('Font/DrukText-Medium-Trial.otf');
+}
+
+@font-face {
+    font-family: 'DW';
+    src: url('Font/DrukWide-Medium-Trial.otf');
+}
+
+@font-face {
+    font-family: 'Roboto Light';
+    src: url('Font/Roboto-VariableFont_wdth\,wght.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--main_black_color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+header {
+    background-color: var(--main_black_color);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 79px;
+    position: fixed;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 56px;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--main_white_color);
+    font-family: 'DT';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color .18s ease, opacity .18s ease;
+}
+
+.nav-link:hover {
+    opacity: 0.9;
+    color: var(--main_green_color);
+    font-weight: 500;
+}
+
+.nav-link-hovered {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--main_green_color);
+    font-family: 'DT';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: color .18s ease, opacity .18s ease;
+}
+
+.header_button {
+    display: flex;
+    padding: 10px 34px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main_green_color);
+    border-radius: 36px;
+    cursor: pointer;
+}
+
+.header_button_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.header_button_text {
+    color: var(--main_black_color);
+    font-family: 'DT';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19.533px;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.arrow_icon_header {
+    width: 8px;
+    height: 13px;
+}
+
+.header_button:hover {
+    background-color: var(--main_green_color);
+    box-shadow: 0 0 20px rgba(44, 243, 44, 0.596);
+}
+
+main {
+    width: 100%;
+}
