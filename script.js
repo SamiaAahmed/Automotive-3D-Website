@@ -9,3 +9,5 @@ window.addEventListener('DOMContentLoaded', function() {
         }, 500);
     }
 });
+
+document.getElementById("text2").innerHTML = "Read More";

@@ -26,13 +26,29 @@
         </nav>
         <div class="header_button">
             <div class="header_button_div">
-                <h5 class="header_button_text" id="text1"></h5>
+                <h5 class="header_button_text" id="text1">GET STARTED</h5>
                 <img class="arrow_icon_header" src="Assets/arrow.svg" alt="">
             </div>
         </div>
     </header>
-    <main></main>
+    <main>
+        <section class="hero_section">
+            <div class="hero_div2">
+                <div class="hero_div1">
+                    <img class="arrow_icon_2" src="Assets/arrow_hero.svg" alt="">
+                    <model-viewer class="hero_modle" src="3D-model/kawashaki_ninja_h2.glb" src="3D-model/Kawashaki_ninja_h2.usdz" ar ar-modes="webxr scene-viewer quick-look" camera-controls disable-zoom tone-mapping="neutral" poster="poster.webp" shadow-intensity="0" exposure="1.31"
+                        shadow-softness="0" min-camera-orbit="auto auto 4.35m" max-camera-orbit="auto auto 4.35m" min-field-of-view="30deg" max-field-of-view="30deg">
+                    </model-viewer>
+                    <img class="arrow_icon_3" src="Assets/arrow_hero.svg" alt="">
+                </div>
+                <div class="hero_button">
+                    <h3 class="hero_button_text" id="text2"></h3>
+                </div>
+            </div>
+        </section>
+    </main>
     <footer></footer>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <script src="script.js"></script>
 </body>
 
