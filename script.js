@@ -1,14 +1,13 @@
 document.getElementById("text1").innerHTML = "EXPLORE NOW";
 
-// Pre Loader Script 
-window.addEventListener('DOMContentLoaded', function() {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
+const preloader = document.querySelector('.preloader');
+if (preloader) {
+    window.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             preloader.classList.add('hide');
         }, 500);
-    }
-});
+    });
+}
 
 document.getElementById("text2").innerHTML = "Read More";
 document.getElementById("text3").innerHTML = "Always stay";
@@ -24,7 +23,157 @@ document.getElementById("text12").innerHTML = "CUTTING-EDGE";
 document.getElementById("text13").innerHTML = "TECH";
 document.getElementById("text14").innerHTML = "Advanced technology to enhance your riding experience.";
 
-// Feature Cards
+const headerButton = document.querySelector('.header_button');
+if (headerButton) {
+    headerButton.addEventListener('click', function() {
+        window.location.href = 'firstproduct.html';
+    });
+}
+
+const burgerMenu = document.createElement('div');
+burgerMenu.className = 'burger-menu';
+burgerMenu.innerHTML = `
+    <span></span>
+    <span></span>
+    <span></span>
+`;
+
+const header = document.querySelector('header');
+header.appendChild(burgerMenu);
+
+const nav = document.querySelector('nav');
+
+burgerMenu.addEventListener('click', function() {
+    burgerMenu.classList.toggle('active');
+    nav.classList.toggle('active');
+});
+
+const navLinks = document.querySelectorAll('.nav-link, .nav-link-hovered');
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        burgerMenu.classList.remove('active');
+        nav.classList.remove('active');
+    });
+});
+
+const heroModels = [{
+        model: "3D-model/kawashaki_ninja_h2.glb",
+        iosModel: "3D-model/Kawashaki_ninja_h2.usdz"
+    },
+    {
+        model: "3D-model/honda_shadow_rs_2010.glb",
+        iosModel: "3D-model/Honda_NR750_1994.usdz"
+    },
+    {
+        model: "3D-model/harley-davidson_flhrxs_road_king_special.glb",
+        iosModel: "3D-model/harley-davidson_flhrxs_road_king_special.usdz"
+    }
+];
+
+let currentHeroIndex = 0;
+const heroModelViewer = document.querySelector('.hero_modle');
+const heroArrowLeft = document.querySelector('.hero_div1 .arrow_icon_2');
+const heroArrowRight = document.querySelector('.hero_div1 .arrow_icon_3');
+
+function updateHeroModel(index) {
+    if (heroModelViewer) {
+        heroModelViewer.setAttribute('src', heroModels[index].model);
+        heroModelViewer.setAttribute('ios-src', heroModels[index].iosModel);
+    }
+}
+
+if (heroArrowLeft) {
+    heroArrowLeft.addEventListener('click', function() {
+        currentHeroIndex = (currentHeroIndex - 1 + heroModels.length) % heroModels.length;
+        updateHeroModel(currentHeroIndex);
+    });
+}
+
+if (heroArrowRight) {
+    heroArrowRight.addEventListener('click', function() {
+        currentHeroIndex = (currentHeroIndex + 1) % heroModels.length;
+        updateHeroModel(currentHeroIndex);
+    });
+}
+
+const helmetProducts = [{
+        model: "3D-model/motorcycle_helmet_-_racing_helmet.glb",
+        iosModel: "3D-model/motorcycle_helmet_-_racing_helmet.usdz",
+        name: "McLaren Helmet",
+        description: "with visor plain"
+    },
+    {
+        model: "3D-model/motor_helmet.glb",
+        iosModel: "3D-model/Motor_Helmet.usdz",
+        name: "Racing Pro Helmet",
+        description: "aerodynamic design"
+    },
+    {
+        model: "3D-model/motorcycle_helmet_-_racing_helmet.glb",
+        iosModel: "3D-model/motorcycle_helmet_-_racing_helmet.usdz",
+        name: "Street Rider Helmet",
+        description: "urban style protection"
+    },
+    {
+        model: "3D-model/motor_helmet.glb",
+        iosModel: "3D-model/Motor_Helmet.usdz",
+        name: "Adventure Helmet",
+        description: "off-road ready"
+    },
+    {
+        model: "3D-model/motorcycle_helmet_-_racing_helmet.glb",
+        iosModel: "3D-model/motorcycle_helmet_-_racing_helmet.usdz",
+        name: "Classic Helmet",
+        description: "timeless design"
+    }
+];
+
+let currentHelmetIndex = 1;
+const section1ArrowLeft = document.querySelector('.section1_div3 .arrow_icon_2');
+const section1ArrowRight = document.querySelector('.section1_div3 .arrow_icon_3');
+const helmetModelViewers = document.querySelectorAll('.helmet_model');
+const helmetNameElement = document.getElementById('text6');
+const helmetDescElement = document.getElementById('text7');
+
+function updateHelmetDisplay(centerIndex) {
+    const prevIndex = (centerIndex - 1 + helmetProducts.length) % helmetProducts.length;
+    const nextIndex = (centerIndex + 1) % helmetProducts.length;
+
+    if (helmetModelViewers.length >= 3) {
+        helmetModelViewers[0].setAttribute('src', helmetProducts[prevIndex].model);
+        helmetModelViewers[0].setAttribute('ios-src', helmetProducts[prevIndex].iosModel);
+
+        helmetModelViewers[1].setAttribute('src', helmetProducts[centerIndex].model);
+        helmetModelViewers[1].setAttribute('ios-src', helmetProducts[centerIndex].iosModel);
+
+        helmetModelViewers[2].setAttribute('src', helmetProducts[nextIndex].model);
+        helmetModelViewers[2].setAttribute('ios-src', helmetProducts[nextIndex].iosModel);
+    }
+
+    if (helmetNameElement) {
+        helmetNameElement.innerHTML = helmetProducts[centerIndex].name;
+    }
+    if (helmetDescElement) {
+        helmetDescElement.innerHTML = helmetProducts[centerIndex].description;
+    }
+}
+
+updateHelmetDisplay(currentHelmetIndex);
+
+if (section1ArrowLeft) {
+    section1ArrowLeft.addEventListener('click', function() {
+        currentHelmetIndex = (currentHelmetIndex - 1 + helmetProducts.length) % helmetProducts.length;
+        updateHelmetDisplay(currentHelmetIndex);
+    });
+}
+
+if (section1ArrowRight) {
+    section1ArrowRight.addEventListener('click', function() {
+        currentHelmetIndex = (currentHelmetIndex + 1) % helmetProducts.length;
+        updateHelmetDisplay(currentHelmetIndex);
+    });
+}
+
 const featureCards = [{
         icon: "Assets/safety icon.svg",
         title: "SAFETY",
@@ -60,7 +209,6 @@ const featureCards = [{
     }
 ];
 
-// Generate Feature Cards
 const section3Div1 = document.querySelector('.section3_div1');
 section3Div1.innerHTML = '';
 
@@ -98,6 +246,8 @@ const allMotorcycleCards = [{
         model: "3D-model/honda_shadow_rs_2010.glb",
         iosModel: "3D-model/Honda_NR750_1994.usdz",
         name: "APEX R1",
+        description: "Pure Performance Unleashed",
+        price: "$22,250",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "205 HP" },
             { icon: "Assets/wind icn.svg", value: "118 NM" },
@@ -108,6 +258,8 @@ const allMotorcycleCards = [{
         model: "3D-model/kawashaki_ninja_h2.glb",
         iosModel: "3D-model/Kawashaki_ninja_h2.usdz",
         name: "VORTEX Z900",
+        description: "Speed Meets Precision",
+        price: "$19,750",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "185 HP" },
             { icon: "Assets/wind icn.svg", value: "102 NM" },
@@ -115,9 +267,11 @@ const allMotorcycleCards = [{
         ]
     },
     {
-        model: "3D-model/ducati motorcycle engine 3d model.glb",
-        iosModel: "3D-model/ducati+motorcycle+engine+3d+model.usdz",
+        model: "3D-model/harley-davidson_flhrxs_road_king_special.glb",
+        iosModel: "3D-model/harley-davidson_flhrxs_road_king_special.usdz",
         name: "PHANTOM X7",
+        description: "Unleash The Beast Within",
+        price: "$21,500",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "195 HP" },
             { icon: "Assets/wind icn.svg", value: "110 NM" },
@@ -128,6 +282,8 @@ const allMotorcycleCards = [{
         model: "3D-model/honda_shadow_rs_2010.glb",
         iosModel: "3D-model/Honda_NR750_1994.usdz",
         name: "THUNDER S1000",
+        description: "Raw Power Redefined",
+        price: "$24,900",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "212 HP" },
             { icon: "Assets/wind icn.svg", value: "125 NM" },
@@ -138,6 +294,8 @@ const allMotorcycleCards = [{
         model: "3D-model/kawashaki_ninja_h2.glb",
         iosModel: "3D-model/Kawashaki_ninja_h2.usdz",
         name: "SONIC MT-09",
+        description: "Agile Street Dominator",
+        price: "$17,250",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "175 HP" },
             { icon: "Assets/wind icn.svg", value: "95 NM" },
@@ -145,9 +303,11 @@ const allMotorcycleCards = [{
         ]
     },
     {
-        model: "3D-model/ducati motorcycle engine 3d model.glb",
-        iosModel: "3D-model/ducati+motorcycle+engine+3d+model.usdz",
+        model: "3D-model/harley-davidson_flhrxs_road_king_special.glb",
+        iosModel: "3D-model/harley-davidson_flhrxs_road_king_special.usdz",
         name: "BLAZE RS660",
+        description: "Lightweight Performance",
+        price: "$16,500",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "165 HP" },
             { icon: "Assets/wind icn.svg", value: "88 NM" },
@@ -158,6 +318,8 @@ const allMotorcycleCards = [{
         model: "3D-model/honda_shadow_rs_2010.glb",
         iosModel: "3D-model/Honda_NR750_1994.usdz",
         name: "NEXUS CBR1000",
+        description: "Track-Ready Excellence",
+        price: "$20,750",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "198 HP" },
             { icon: "Assets/wind icn.svg", value: "115 NM" },
@@ -168,6 +330,8 @@ const allMotorcycleCards = [{
         model: "3D-model/kawashaki_ninja_h2.glb",
         iosModel: "3D-model/Kawashaki_ninja_h2.usdz",
         name: "RAPTOR GSX-R750",
+        description: "Balanced Perfection",
+        price: "$18,900",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "190 HP" },
             { icon: "Assets/wind icn.svg", value: "108 NM" },
@@ -175,9 +339,11 @@ const allMotorcycleCards = [{
         ]
     },
     {
-        model: "3D-model/ducati motorcycle engine 3d model.glb",
-        iosModel: "3D-model/ducati+motorcycle+engine+3d+model.usdz",
+        model: "3D-model/harley-davidson_flhrxs_road_king_special.glb",
+        iosModel: "3D-model/harley-davidson_flhrxs_road_king_special.usdz",
         name: "STRIKE ZX-10R",
+        description: "Supercharged Supremacy",
+        price: "$23,250",
         specs: [
             { icon: "Assets/bolt icon.svg", value: "200 HP" },
             { icon: "Assets/wind icn.svg", value: "113 NM" },
@@ -186,7 +352,6 @@ const allMotorcycleCards = [{
     },
 ];
 
-// Changed back to 3 rows with 3 cards each
 const rowDistribution = [3, 3, 3];
 
 const section4Div5 = document.querySelector('.section4_div5');
@@ -212,8 +377,10 @@ rowDistribution.forEach((cardsInRow, rowIndex) => {
 
     for (let i = 0; i < cardsInRow && bikeIndex < allMotorcycleCards.length; i++) {
         const bike = allMotorcycleCards[bikeIndex];
+        const currentIndex = bikeIndex;
         const card = document.createElement('div');
         card.className = 'card_3d';
+        card.style.cursor = 'pointer';
 
         let specsHTML = '';
         bike.specs.forEach(spec => {
@@ -241,10 +408,17 @@ rowDistribution.forEach((cardsInRow, rowIndex) => {
             </div>
         `;
 
+        card.addEventListener('click', function() {
+            localStorage.setItem('selectedProduct', JSON.stringify(allMotorcycleCards[currentIndex]));
+            window.location.href = 'firstproduct.html';
+        });
+
         targetContainer.appendChild(card);
+
         bikeIndex++;
     }
 });
+
 const paginationDiv = document.createElement('div');
 paginationDiv.className = 'pagination';
 paginationDiv.innerHTML = `
@@ -259,3 +433,26 @@ paginationDiv.innerHTML = `
     </button>
 `;
 section4.appendChild(paginationDiv);
+
+document.getElementById("text19").innerHTML = "TAYVO";
+document.getElementById("text20").innerHTML = "Join thousands of riders who have chosen excellence. Experience the revolution.";
+document.getElementById("text21").innerHTML = "TAYVO";
+document.getElementById("text22").innerHTML = "Engineering excellence since 2010. Redefining the art of motorcycle performance.";
+document.getElementById("text23").innerHTML = "MODELS";
+document.getElementById("text24").innerHTML = "Sport Bikes";
+document.getElementById("text25").innerHTML = "Cruisers";
+document.getElementById("text26").innerHTML = "Touring";
+document.getElementById("text27").innerHTML = "Adventure";
+document.getElementById("text28").innerHTML = "Electric";
+document.getElementById("text29").innerHTML = "SUPPORT";
+document.getElementById("text30").innerHTML = "Owner Resources";
+document.getElementById("text31").innerHTML = "Manuals";
+document.getElementById("text32").innerHTML = "Warranty";
+document.getElementById("text33").innerHTML = "Service Centers";
+document.getElementById("text34").innerHTML = "FAQ";
+document.getElementById("text35").innerHTML = "COMPANY";
+document.getElementById("text36").innerHTML = "About Us";
+document.getElementById("text37").innerHTML = "Careers";
+document.getElementById("text38").innerHTML = "Press";
+document.getElementById("text39").innerHTML = "Sustainability";
+document.getElementById("text40").innerHTML = "Contact";
